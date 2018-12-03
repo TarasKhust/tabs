@@ -1,4 +1,4 @@
-window.addEventListener('DOMContentLoaded', () => {
+(window.addEventListener('DOMContentLoaded', () => {
 
     'use strict';
     let tab = document.querySelectorAll('.info-header-tab'),
@@ -76,4 +76,4 @@ window.addEventListener('DOMContentLoaded', () => {
 
     object.hideTabContent(1);
     object.addEvent();
-});
+}));
