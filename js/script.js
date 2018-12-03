@@ -41,14 +41,14 @@
             this.tabContent = tabContent;
         }
 
-        hideTabContent (a) {
+        static hideTabContent (a) {
             for (let i = a; i < tabContent.length; i++) {
                 tabContent[i].classList.remove('show');
                 tabContent[i].classList.add('hide');
             }
         }; // find and deleted class tabs
 
-        showTabContent (b) {
+        static showTabContent (b) {
             if (tabContent[b].classList.contains('hide')) {
                 tabContent[b].classList.remove('hide');
                 tabContent[b].classList.add('show');
@@ -61,8 +61,8 @@
                 if (target && target.classList.contains('info-header-tab')) {
                     for (let i = 0; i < tab.length; i++) {
                         if (target === tab[i]) {
-                            this.hideTabContent(0);
-                            this.showTabContent(i);
+                            Tabs.hideTabContent(0);
+                            Tabs.showTabContent(i);
                             break;
                         }
                     }
@@ -74,6 +74,6 @@
 
     let object = new Tabs(tab, info, tabContent);
 
-    object.hideTabContent(1);
+    Tabs.hideTabContent(1);
     object.addEvent();
 }));
