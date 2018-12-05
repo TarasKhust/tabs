@@ -72,7 +72,7 @@
     }
 
 
-    let object = new Tabs(tab, info, tabContent);
+    const object = new Tabs(tab, info, tabContent);
 
     Tabs.hideTabContent(1);
     object.addEvent();
