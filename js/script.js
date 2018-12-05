@@ -78,10 +78,10 @@
     object.addEvent();
 
     //Timer
-    let deadline = '2018-12-21';
+    let deadline = '2018-12-27';
 
-    function getTimeRemaining (endtime) {
-        let t = Date.parse(endtime) - Date.parse(new Date()),
+    function getTimeRemaining (gameOver) {
+        let t = Date.parse(gameOver) - Date.parse(new Date()),
             seconds = Math.floor((t/1000) % 60),
             minutes = Math.floor((t/1000/60) % 60),
             hours = Math.floor((t/(1000*60*60)));
@@ -94,33 +94,57 @@
         };
     }
 
-    function setClock (id, endtime) {
+    function setClock (id, gameOver) {
         let timer = document.getElementById(id),
             hours = timer.querySelector('.hours'),
             minutes = timer.querySelector('.minutes'),
             seconds = timer.querySelector('.seconds'),
             timeInterval = setInterval(updateClock, 1000);
 
-        function updateClock () {
-            let t = getTimeRemaining(endtime);
+    function updateClock () {
+        let t = getTimeRemaining(gameOver);
 
-            function addZero(num){
-                if(num <= 9) {
-                    return '0' + num;
-                } else return num;
-            }
-            hours.textContent = addZero(t.hours);
-            minutes.textContent = addZero(t.minutes);
-            seconds.textContent = addZero(t.seconds);
+        function addZero(num){
+            if(num <= 9) {
+                return '0' + num;
+            } else return num;
+        }
+        hours.textContent = addZero(t.hours);
+        minutes.textContent = addZero(t.minutes);
+        seconds.textContent = addZero(t.seconds);
 
-            if (t.total <= 0) {
-                clearInterval(timeInterval);
-                hours.textContent = '00';
-                minutes.textContent = '00';
-                seconds.textContent = '00';
-            }
+        if (t.total <= 0) {
+            clearInterval(timeInterval);
+            hours.textContent = '00';
+            minutes.textContent = '00';
+            seconds.textContent = '00';
         }
     }
+    }
 
-    setClock('timer', deadline)
+    setClock('timer', deadline);
+
+    // Modal
+    let more = document.querySelector('#about'),
+        overlay = document.querySelector('.overlay'),
+        close = document.querySelector('.popup-close');
+
+    function runModalWindow () {
+        overlay.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+
+        close.addEventListener('click', () => {
+            overlay.style.display = 'none';
+            document.body.style.overflow = '';
+        })
+    }
+
+    more.addEventListener('click', (event) => {
+        let target = event.target;
+        if (target.className === 'more' || target.className === 'description-btn') {
+            runModalWindow()
+        }
+    })
+
+
 }));
