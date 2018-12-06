@@ -80,7 +80,7 @@
     //Timer
     let deadline = '2018-12-27';
 
-    function getTimeRemaining (gameOver) {
+    let getTimeRemaining = (gameOver) => {
         let t = Date.parse(gameOver) - Date.parse(new Date()),
             seconds = Math.floor((t/1000) % 60),
             minutes = Math.floor((t/1000/60) % 60),
@@ -92,9 +92,9 @@
             'minutes' : minutes,
             'seconds' : seconds
         };
-    }
+    };
 
-    function setClock (id, gameOver) {
+    let setClock = (id, gameOver) => {
         let timer = document.getElementById(id),
             hours = timer.querySelector('.hours'),
             minutes = timer.querySelector('.minutes'),
@@ -120,7 +120,7 @@
             seconds.textContent = '00';
         }
     }
-    }
+    };
 
     setClock('timer', deadline);
 
@@ -129,7 +129,7 @@
         overlay = document.querySelector('.overlay'),
         close = document.querySelector('.popup-close');
 
-    function runModalWindow () {
+    let runModalWindow = () => {
         overlay.style.display = 'block';
         document.body.style.overflow = 'hidden';
 
@@ -137,7 +137,7 @@
             overlay.style.display = 'none';
             document.body.style.overflow = '';
         })
-    }
+    };
 
     more.addEventListener('click', (event) => {
         let target = event.target;
