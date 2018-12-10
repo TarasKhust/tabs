@@ -10,7 +10,7 @@ let ASSET_PATH = process.env.ASSET_PATH || '';
 let conf = {
     entry: {
         app: './app.js',
-        // contact: './src/contact.js',
+        ajax: './app2.js',
     },
     output: {
         path: DIST_DIR,
@@ -116,21 +116,22 @@ let conf = {
             title: 'Index',
             template: './index.html',
             hash: true,
-            // excludeChunks: ['contact'],
+            excludeChunks: ['ajax'],
+            // chunks:['index'],
             // minify: {
             //     collapseWhitespace: true
             // },
         }),
 
-       /* new HtmlWebpackPlugin({
+        new HtmlWebpackPlugin({
             title: 'Ajax',
-            template: './src/ajax.html',
+            template: './ajax.html',
             hash: true,
             filename: 'ajax.html',
-            // chunks: ['contact'],
+            chunks: ['ajax'],
             // minify: {
             //     collapseWhitespace: true },
-        }),*/
+        }),
 
         // new CopyWebpackPlugin(
         //      [
