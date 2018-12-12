@@ -1,11 +1,11 @@
-let path = require('path');
-let ExtractTextPlugin = require("extract-text-webpack-plugin");
-let HtmlWebpackPlugin = require('html-webpack-plugin');
-let webpack = require('webpack');
+const path = require('path');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack');
 
-let SRC_DIR = path.resolve(__dirname,'src');
-let DIST_DIR = path.resolve(__dirname, 'dist');
-let ASSET_PATH = process.env.ASSET_PATH || '';
+const SRC_DIR = path.resolve(__dirname,'src');
+const DIST_DIR = path.resolve(__dirname, 'dist');
+const ASSET_PATH = process.env.ASSET_PATH || '';
 
 let conf = {
     entry: {
