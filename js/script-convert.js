@@ -4,9 +4,9 @@ let inputRub = document.getElementById('rub'),
 
 inputRub.addEventListener('input', () => {
 
-  function catchData() {
+  const catchData = () => {
 
-    return new Promise(function(resolve, reject){
+    return new Promise((resolve, reject) => {
       let request = new XMLHttpRequest();
       request.open("GET", "js/current.json");
 
@@ -25,7 +25,7 @@ inputRub.addEventListener('input', () => {
         }
       }
     });
-  }
+  };
   catchData()
   .then(response => {
     console.log(response);
