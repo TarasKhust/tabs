@@ -1,6 +1,9 @@
-;(window.addEventListener('DOMContentLoaded', () => {
+const slider = require('./slider');
+const form = require('./form');
+const modal = require('./modal');
 
-    'use strict';
+(window.addEventListener('DOMContentLoaded', () => {
+  'use strict';
     let tab = document.querySelectorAll('.info-header-tab'),
         info = document.querySelector('.info-header'),
         tabContent = document.querySelectorAll('.info-tabcontent');
@@ -95,134 +98,7 @@
 
     setClock('timer', deadline);
 
-    // Modal
-    let more = document.querySelector('#about'),
-        overlay = document.querySelector('.overlay'),
-        close = document.querySelector('.popup-close');
-
-    let runModalWindow = () => {
-        overlay.style.display = 'block';
-        document.body.style.overflow = 'hidden';
-
-        close.addEventListener('click', () => {
-            overlay.style.display = 'none';
-            document.body.style.overflow = '';
-        })
-    };
-
-    more.addEventListener('click', (event) => {
-        let target = event.target;
-        if (target.className === 'more' || target.className === 'description-btn') {
-            runModalWindow()
-        }
-    });
-
-
-
-
-
-
-    // Form
-
-    let message = {
-        loading: 'Загрузка',
-        success: 'Спасибо! скоро мы с вами свяжемся',
-        failure: 'Что-то пошло не так...'
-    };
-
-    let form = document.querySelector('.main-form'),
-        input = form.getElementsByTagName('input'),
-        fragment = document.createDocumentFragment(),
-        statusMessage = document.createElement('div');
-
-        statusMessage.classList.add('status');
-
-    form.addEventListener('submit', (event) => {
-        event.preventDefault();
-        fragment.appendChild(statusMessage);
-        form.appendChild(fragment);
-
-        let request = new XMLHttpRequest();
-        request.open('POST', 'server.php' );
-        request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-
-        let formData = new FormData(form);
-
-        let obj = {};
-        formData.forEach((value, key) => {
-            obj[key] = value;
-        });
-
-        let json = JSON.stringify(obj);
-
-        request.send(formData);
-
-        request.addEventListener('readystatechange', function () {
-            if (request.readyState < 4) {
-                statusMessage.innerHTML = message.loading;
-            } else  if (request.readyState === 4 && request.status === 200) {
-                statusMessage.innerHTML = message.success;
-            } else  {
-                statusMessage.innerHTML = message.failure;
-            }
-
-        });
-
-            for (let i = 0; i < input.length; i++) {
-                input[i].value = '';
-            }
-
-    });
-
-  // Slider
-
-  let slideIndex = 1,
-      slides = document.querySelectorAll('.slider-item'),
-      prev = document.querySelector('.prev'),
-      next = document.querySelector('.next'),
-      dotsWrap = document.querySelector('.slider-dots'),
-      dots = document.querySelectorAll('.dot');
-
-
-  let showSlides = (n) => {
-      if (n > slides.length) {
-          slideIndex = 1
-      }
-      if (n < 1) {
-          slideIndex = slides.length
-      }
-
-    slides.forEach((item) => item.style.display = 'none');
-
-    dots.forEach((item) => item.classList.remove('dot-active'));
-
-    slides[slideIndex - 1].style.display = 'block';
-    dots[slideIndex - 1].classList.add('dot-active');
-  };
-
-  showSlides(slideIndex);
-
-  let plusSlides = (n) => {
-    showSlides(slideIndex += n);
-  };
-
-  let currentSlide = (n) => {
-    showSlides(slideIndex = n);
-  };
-
-  prev.addEventListener('click', () => {
-    plusSlides(-1);
-  });
-
-  next.addEventListener('click', () => {
-    plusSlides(1);
-  });
-
-  dotsWrap.addEventListener('click', () => {
-      for (let i = 0; i < dots.length + 1; i++) {
-          if (event.target.classList.contains('dot') && event.target == dots[i-1]) {
-              currentSlide(i);
-          }
-      } 
-  })
+  modal(); // Modal
+  form(); // Form
+  slider(); // Slider
 }));
