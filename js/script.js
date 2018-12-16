@@ -1,6 +1,7 @@
 ;(window.addEventListener('DOMContentLoaded', () => {
+
   'use strict';
-  const slider = require('./slider'),
+  let slider = require('./slider'),
       form = require('./form'),
       modal = require('./modal'),
       timer = require('./timer'),

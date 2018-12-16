@@ -1,3 +1,4 @@
+'use strict';
 const path = require('path');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -49,7 +50,7 @@ let conf = {
             {
                 test: /\.js$/,
                 loader: 'babel-loader',
-                // exclude: '/node_modules/'
+                exclude: '/node_modules/',
                 query: {
                     presets: ['es2015']
                 }
