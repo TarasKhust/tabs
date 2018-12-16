@@ -16,6 +16,7 @@
   "author": "Taras Rushchak",
   "license": "MIT",
   "devDependencies": {
+    "alias-quokka-plugin": "^0.1.0",
     "autoprefixer": "^8.6.5",
     "babel-core": "^6.26.3",
     "babel-jest": "^23.6.0",
@@ -57,7 +58,10 @@
   "dependencies": {
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-polyfill": "^6.26.0",
-    "postcss": "^6.0.23"
+    "jsdom-quokka-plugin": "^1.0.13",
+    "postcss": "^6.0.23",
+    "quokka-jquery-loader": "0.0.3",
+    "ts-node": "^7.0.1"
   },
   "repository": "git@github.com:TarasKhust/UdemyJS.git"
 }

@@ -6,3 +6,6 @@ import './js/form.js';
 import './js/modal.js';
 import './js/addDiv.js';
 import './js/calculator.js';
+import './js/localStorage.js';
+import './js/timer.js';
+import './js/tabs.js';
